@@ -1,0 +1,35 @@
+.contendor{
+    width: 80%;
+    height: 94vh;
+    background: #696161;
+    padding: 3vh 10%;
+    overflow-x: hidden;
+}
+.borde{
+    border: 3px solid black;
+    height: 94vh;
+}
+.barra__superior{
+    height: 5vh;
+    background: #c7c2c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+.main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.main_table{
+    width: 98%;
+    margin-top: 1vh;
+    height: 87vh;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.table_title, .table_cont{
+    border: 3px solid black;
+}
+/* Responsive */
