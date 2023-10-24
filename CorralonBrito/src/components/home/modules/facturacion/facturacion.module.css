@@ -1,0 +1,22 @@
+.contenedor__facturacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #00000033;
+}
+.lista__facturacion{
+    margin: 1vh;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.elemento__lista{
+    margin: 2vh 0;
+    padding: 1vh;
+    border: 1px solid red;
+    border-radius: 1rem;
+}
+p{
+    border-bottom: 1px solid beige;
+    height: auto;
+}

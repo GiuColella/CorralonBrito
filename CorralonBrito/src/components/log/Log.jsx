@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import StyleLog from './log.module.css';
 import axios from 'axios';
 
 export default function Log() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+ const [username, setUsername] = useState('');
+ const [password, setPassword] = useState('');
 
-  const handleSubmit = async (event) => {
+ const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post('/your-api-url', { username, password });
@@ -15,9 +16,9 @@ export default function Log() {
     } catch (error) {
       console.error(error);
     }
-  };
+ };
 
-  return (
+ return (
     <div className={StyleLog.box}>
       <div className={StyleLog.contenedor}>
         <div className={StyleLog.contenedor__superior}>
@@ -44,10 +45,10 @@ export default function Log() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" className={StyleLog.formulario__boton}>Ingresar</button>
+            <Link to='/home'><button type="submit" className={StyleLog.formulario__boton}>Ingresar</button></Link>
           </form>
         </div>
       </div>
     </div>
-  );
+ );
 }

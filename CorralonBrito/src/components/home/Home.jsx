@@ -1,6 +1,10 @@
 import React from 'react'
 import StyleHome from './home.module.css'
 import ButtonUser from './assets/buttonUser/ButtonUser'
+import Facturacion from './modules/facturacion/Facturacion'
+import StockControl from './modules/stock/Stock'
+import Sales from './modules/ventas&envios/Ventas'
+import Shipments from './modules/ventas&envios/Envios'
 
 export default function Home() {
     return (
@@ -33,9 +37,9 @@ export default function Home() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className={StyleHome.table_cont}>Dato 1</td>
-                                <td className={StyleHome.table_cont}>Dato 2</td>
-                                <td className={StyleHome.table_cont}>Dato 3</td>
+                                <td className={StyleHome.table_cont}><StockControl/></td>
+                                <td className={StyleHome.table_cont}><Sales/><Shipments/></td>
+                                <td className={StyleHome.table_cont}><Facturacion/></td>
                             </tr>
                         </tbody>
                     </table>
