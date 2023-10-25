@@ -6,7 +6,7 @@ const Shipments = () => {
 
   useEffect(() => {
     const fetchShipments = async () => {
-      const result = await axios.get("/api/shipments");
+      const result = await axios.get("http://localhost:3000/corralonbrito/envios");
       setShipments(result.data);
     };
 

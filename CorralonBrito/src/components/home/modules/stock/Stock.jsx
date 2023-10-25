@@ -1,27 +1,31 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const StockControl = () => {
- const [stock, setStock] = useState([]);
+  const [stock, setStock] = useState([]);
 
- // Obtener el stock actual
- useEffect(() => {
+  // Obtener el stock actual
+  useEffect(() => {
     const fetchStock = async () => {
-      const result = await axios.get('/api/stock');
-      setStock(result.data);
+      try {
+        const result = await axios.get('http://localhost:3000/corralonbrito/stock');
+        console.log('Datos del stock:', result.data);
+        setStock(result.data);
+      } catch (error) {
+        console.error('Error al cargar el stock:', error);
+      }
     };
-
     fetchStock();
- }, []);
+  }, []);
 
- // Actualizar el stock
- const updateStock = async (id, newQuantity) => {
-    await axios.put(`/api/stock/${id}`, { quantity: newQuantity });
+
+  // Actualizar el stock
+  const updateStock = async (id, newQuantity) => {
+    await axios.put(`http://localhost:3000/corralonbrito/stock${id}`, { quantity: newQuantity });
     setStock(stock.map(item => item.id === id ? { ...item, quantity: newQuantity } : item));
- };
+  };
 
- return (
+  return (
     <div>
       <h2>Control de Stock</h2>
       <table>
@@ -33,8 +37,8 @@ const StockControl = () => {
           </tr>
         </thead>
         <tbody>
-          {stock.map(item => (
-            <tr key={item.id}>
+          {stock.map((item, index) => (
+            <tr key={index}>
               <td>{item.product}</td>
               <td>{item.quantity}</td>
               <td>
@@ -44,9 +48,10 @@ const StockControl = () => {
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
- );
+  );
 };
 
 export default StockControl;

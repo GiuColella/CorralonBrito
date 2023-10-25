@@ -6,8 +6,12 @@ const Sales = () => {
 
   useEffect(() => {
     const fetchSales = async () => {
-      const result = await axios.get("/api/sales");
-      setSales(result.data);
+      try {
+        const result = await axios.get("http://localhost:3000/corralonbrito/ventas");
+        setSales(result.data);
+      } catch (error) {
+        console.error("Error al cargar ventas:", error);
+      }
     };
 
     fetchSales();
@@ -18,7 +22,7 @@ const Sales = () => {
       <h2>Sales</h2>
       <ul>
         {sales.map((sale) => (
-          <li key={sale.id}>{sale.product} - {sale.quantity}</li>
+          <li key={sale.idVenta}>{sale.nombreCliente}</li>
         ))}
       </ul>
     </div>
