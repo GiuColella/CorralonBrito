@@ -1,10 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import StyleHome from './home.module.css'
 import ButtonUser from './assets/buttonUser/ButtonUser'
 import Facturacion from './modules/facturacion/Facturacion'
 import StockControl from './modules/stock/Stock'
-import Sales from './modules/ventas&envios/Ventas'
-import Shipments from './modules/ventas&envios/Envios'
+import Envios from './modules/ventas&envios/Envios'
 
 export default function Home() {
     return (
@@ -14,7 +14,7 @@ export default function Home() {
                     {/* Barra Superior */}
                     <div className="">
                         {/* Logo */}
-                        <div>logo</div>
+                        <img className={StyleHome.imagen} src="./logo2.png" alt="" />
                     </div>
                     <div className="">
                         {/* Sucursal */}
@@ -22,24 +22,23 @@ export default function Home() {
                     </div>
                     <div className="">
                         {/* Usuario */}
-                        <ButtonUser/>
+                        <Link to='/'><button className={StyleHome.boton}>Salir</button></Link>
                     </div>
                 </div>
                 <div className={StyleHome.main}>
                     {/* Contenido Main */}
                     <table className={StyleHome.main_table}>
-                        <thead>
-                            <tr>
-                                <th className={StyleHome.table_title}>Stock</th>
-                                <th className={StyleHome.table_title}>Ventas y envios</th>
-                                <th className={StyleHome.table_title}>Facturacion</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
-                                <td className={StyleHome.table_cont}><StockControl/></td>
-                                <td className={StyleHome.table_cont}><Sales/><Shipments/></td>
-                                <td className={StyleHome.table_cont}><Facturacion/></td>
+                                <td className={StyleHome.table_cont}>
+                                    <StockControl/>
+                                    </td>
+                                <td className={StyleHome.table_cont}>
+                                    <Envios/>
+                                    </td>
+                                <td className={StyleHome.table_cont}>
+                                    <Facturacion/>
+                                    </td>
                             </tr>
                         </tbody>
                     </table>

@@ -23,10 +23,7 @@ export default function Log() {
       <div className={StyleLog.contenedor}>
         <div className={StyleLog.contenedor__superior}>
           <div className={''}>
-            <div className={StyleLog.logo}></div>
-          </div>
-          <div className={''}>
-            <h1>CorralonBrito</h1>
+            <img className={StyleLog.logo} src="./logo1.png" alt="" />
           </div>
         </div>
         <div className={StyleLog.contenedor__inferior}>

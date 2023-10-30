@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import StyleStock from './stock.module.css'
 
 const StockControl = () => {
   const [stock, setStock] = useState([]);
@@ -26,25 +27,20 @@ const StockControl = () => {
   };
 
   return (
-    <div>
+    <div className={StyleStock.contenedor__stock}>
       <h2>Control de Stock</h2>
       <table>
         <thead>
           <tr>
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {stock.map((item, index) => (
             <tr key={index}>
-              <td>{item.product}</td>
-              <td>{item.quantity}</td>
-              <td>
-                <button onClick={() => updateStock(item.id, item.quantity + 1)}>+</button>
-                <button onClick={() => updateStock(item.id, item.quantity - 1)}>-</button>
-              </td>
+              <td>{item.Nombre}</td>
+              <td>{item.stock_actual}</td>
             </tr>
           ))}
         </tbody>

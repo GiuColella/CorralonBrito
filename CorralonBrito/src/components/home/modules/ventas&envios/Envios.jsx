@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StyleEnvios from './envios.module.css'
 
-const Shipments = () => {
+const Envios = () => {
   const [shipments, setShipments] = useState([]);
 
   useEffect(() => {
@@ -14,15 +15,16 @@ const Shipments = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Shipments</h2>
-      <ul>
-        {shipments.map((shipment) => (
-          <li key={shipment.id}>{shipment.product} - {shipment.quantity}</li>
+    <div className={StyleEnvios.contenedor__envio}>
+      <h2 className={''}>Envios</h2>
+      <ul className={''}>
+        {shipments.map((shipment, index) => (
+          <li className={StyleEnvios.lista} key={index}>{shipment.Direccion_Envio} - {shipment.Cantidad}</li>
         ))}
+
       </ul>
     </div>
   );
 };
 
-export default Shipments;
+export default Envios;
