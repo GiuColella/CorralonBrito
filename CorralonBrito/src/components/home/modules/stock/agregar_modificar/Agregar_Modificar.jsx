@@ -3,6 +3,7 @@ import axios from 'axios';
 import Style_Ag_Mo from './agregar_modificar.module.css'
 import Modificar from './modificar/Modificar';
 import Agregar from './agregar/Agregar';
+import Eliminar from './eliminar/Eliminar';
 
 const Agregar_Modificar = () => {
     const [mostrar, setMostrar] = useState('agregar');
@@ -40,6 +41,18 @@ const Agregar_Modificar = () => {
             console.error('Error al actualizar el producto:', error);
         }
     };
+    const deleteProduct = async () => {
+        if (Nombre === '') {
+            console.log('Por favor, ingresa un nombre de producto.');
+            return;
+        }
+        try {
+            await axios.delete(`http://localhost:3000/corralonbrito/productos/:id`);
+            console.log('Producto eliminado con éxito');
+        } catch (error) {
+            console.error('Error al eliminar el producto:', error);
+        }
+    };
 
     return (
         <div className="">
@@ -48,20 +61,23 @@ const Agregar_Modificar = () => {
                 <button className={Style_Ag_Mo.botones} onClick={() => setMostrar('agregar')}>Agregar</button>
                 {/*Boton de Modificar */}
                 <button className={Style_Ag_Mo.botones} onClick={() => setMostrar('modificar')}>Modificar</button>
-
+                {/*Boton de Eliminar */}
+                <button className={Style_Ag_Mo.botones} onClick={() => setMostrar('eliminar')}>Eliminar</button>
             </div>
             {mostrar === 'agregar' ? (
                 <div className={Style_Ag_Mo.agregar}>
                     <Agregar/>
                 </div>
-            ) : (
+            ) : mostrar === 'modificar' ? (
                 <div className={Style_Ag_Mo.modificar}>
                     <Modificar/>
                 </div>
-
+            ) : (
+                <div className={Style_Ag_Mo.eliminar}>
+                    <Eliminar/>
+                </div>
+                
             )}
-
-
         </div>
     );
 };

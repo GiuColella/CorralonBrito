@@ -12,6 +12,13 @@
     align-items: center;
     margin: 1rem;
 }
+.eliminar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
 .botones{
     padding: 1vh;
     background: #f87408a2;
