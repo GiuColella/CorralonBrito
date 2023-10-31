@@ -1,7 +1,16 @@
-.contenedor__stock{
+.agregar{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin: 1rem;
+}
+.modificar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
 }
 .botones{
     padding: 1vh;
@@ -9,8 +18,5 @@
     border-radius: 1rem;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0 .2rem;
-}
-.botones_stock{
-    display: flex;
+    margin: 1rem .2rem;
 }

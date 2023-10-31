@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import StyleFacturacion from './facturacion.module.css'
 
+// Componente de Facturación
 const Facturacion = () => {
-    const [idVenta, setIdVenta] = useState('');
+  const [personas, setPersonas] = useState(['Persona 1', 'Persona 2', 'Persona 3', 'Persona 4', 'Persona 5']);
+  const [personaActual, setPersonaActual] = useState(null);
 
-    return (
-        <div className={StyleFacturacion.contenedor__facturacion}>
-            <label>
-                ID de Venta:
-                <input type="text" value={idVenta} onChange={(e) => setIdVenta(e.target.value)} />
-            </label>
-            <Link to={`/factura`}>
-                <button className={StyleFacturacion.facturacion__boton}>Ir a Factura</button>
-            </Link>
-        </div>
-    );
+  return (
+    <div>
+      {personas.map((persona) => (
+        <button key={persona} onClick={() => setPersonaActual(persona)}>
+          Ver factura de {persona}
+        </button>
+      ))}
+
+      {personaActual && <Factura nombre={personaActual} />}
+    </div>
+  );
 };
 
 export default Facturacion;

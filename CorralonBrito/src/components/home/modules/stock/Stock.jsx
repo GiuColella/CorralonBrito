@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StyleStock from './stock.module.css'
+import Agregar_Modificar from './agregar_modificar/Agregar_Modificar';
+import VerProductos from './verStock/VerStock';
 
 const StockControl = () => {
   const [stock, setStock] = useState([]);
+  const [view, setView] = useState('VIEW'); // El estado inicial es 'VIEW'
 
   // Obtener el stock actual
   useEffect(() => {
@@ -19,7 +22,6 @@ const StockControl = () => {
     fetchStock();
   }, []);
 
-
   // Actualizar el stock
   const updateStock = async (id, newQuantity) => {
     await axios.put(`http://localhost:3000/corralonbrito/stock${id}`, { quantity: newQuantity });
@@ -29,23 +31,18 @@ const StockControl = () => {
   return (
     <div className={StyleStock.contenedor__stock}>
       <h2>Control de Stock</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stock.map((item, index) => (
-            <tr key={index}>
-              <td>{item.Nombre}</td>
-              <td>{item.stock_actual}</td>
-            </tr>
-          ))}
-        </tbody>
-
-      </table>
+      {/* Botón para ver productos */}
+      <div className={StyleStock.botones_stock}>
+        <button className={StyleStock.botones} onClick={() => setView('VIEW')}>Ver productos</button>
+        {/* Botón para agregar/modificar productos */}
+        <button className={StyleStock.botones} onClick={() => setView('EDIT')}>Agregar/Modificar productos</button>
+      </div>
+      {view === 'VIEW' ? (
+        <VerProductos/>
+      ) : (
+        // Aquí puedes renderizar el componente para agregar/modificar productos
+        <Agregar_Modificar updateStock={updateStock} />
+      )}
     </div>
   );
 };

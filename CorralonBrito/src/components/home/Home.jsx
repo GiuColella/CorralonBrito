@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StyleHome from './home.module.css'
-import ButtonUser from './assets/buttonUser/ButtonUser'
 import Facturacion from './modules/facturacion/Facturacion'
 import StockControl from './modules/stock/Stock'
-import Envios from './modules/ventas&envios/Envios'
+import Compra_Venta from './modules/compraVenta/Compra_Venta'
 
 export default function Home() {
     return (
@@ -34,7 +33,7 @@ export default function Home() {
                                     <StockControl/>
                                     </td>
                                 <td className={StyleHome.table_cont}>
-                                    <Envios/>
+                                    <Compra_Venta/>
                                     </td>
                                 <td className={StyleHome.table_cont}>
                                     <Facturacion/>
